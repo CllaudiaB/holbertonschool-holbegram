@@ -8,6 +8,7 @@
       "version": "1.0.0+1",
       "dependencies": [
         "cupertino_icons",
+        "firebase_core",
         "flutter"
       ],
       "devDependencies": [
@@ -17,7 +18,7 @@
     },
     {
       "name": "flutter_lints",
-      "version": "5.0.0",
+      "version": "6.0.0",
       "dependencies": [
         "lints"
       ]
@@ -51,6 +52,16 @@
       ]
     },
     {
+      "name": "firebase_core",
+      "version": "3.15.2",
+      "dependencies": [
+        "firebase_core_platform_interface",
+        "firebase_core_web",
+        "flutter",
+        "meta"
+      ]
+    },
+    {
       "name": "cupertino_icons",
       "version": "1.0.8",
       "dependencies": []
@@ -66,6 +77,11 @@
         "sky_engine",
         "vector_math"
       ]
+    },
+    {
+      "name": "lints",
+      "version": "6.0.0",
+      "dependencies": []
     },
     {
       "name": "vm_service",
@@ -226,14 +242,55 @@
       ]
     },
     {
+      "name": "firebase_core_web",
+      "version": "2.24.1",
+      "dependencies": [
+        "firebase_core_platform_interface",
+        "flutter",
+        "flutter_web_plugins",
+        "meta",
+        "web"
+      ]
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "version": "6.0.0",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "flutter_test",
+        "meta",
+        "plugin_platform_interface"
+      ]
+    },
+    {
       "name": "sky_engine",
       "version": "0.0.0",
       "dependencies": []
     },
     {
-      "name": "lints",
-      "version": "5.1.1",
+      "name": "flutter_web_plugins",
+      "version": "0.0.0",
+      "dependencies": [
+        "characters",
+        "collection",
+        "flutter",
+        "material_color_utilities",
+        "meta",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
       "dependencies": []
+    },
+    {
+      "name": "plugin_platform_interface",
+      "version": "2.1.8",
+      "dependencies": [
+        "meta"
+      ]
     }
   ],
   "configVersion": 1
