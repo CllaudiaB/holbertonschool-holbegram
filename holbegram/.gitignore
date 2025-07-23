@@ -1,0 +1,6 @@
+firebase.json
+.flutter-plugins-dependencies
+/lib/firebase_options.dart
+/.dart_tools/package_config_subsea
+/.dart_tool/package_config.json
+/.dart_tool/package_graph.json
