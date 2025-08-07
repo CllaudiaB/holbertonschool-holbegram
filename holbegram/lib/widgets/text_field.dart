@@ -12,7 +12,7 @@ class TextFieldInput extends StatelessWidget {
     required this.controller,
     required this.ispassword,
     required this.hintText,
-    required this.suffixIcon,
+    this.suffixIcon,
     required this.keyboardType,
   });
 
