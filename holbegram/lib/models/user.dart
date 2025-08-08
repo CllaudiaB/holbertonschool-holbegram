@@ -1,5 +1,7 @@
-class User {
-  String uid;
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class Users {
+	String uid;
   String email;
   String username;
   String bio;
@@ -10,7 +12,7 @@ class User {
   List<dynamic> saved;
   String searchKey;
 
-  User({
+	Users({
     required this.uid,
     required this.email,
     required this.username,
@@ -23,34 +25,38 @@ class User {
     required this.searchKey,
   });
 
-  static User fromSnap(DocumentSnapshot snap) {
-    var snapshot = snap.data() as Map<String, dynamic>;
-    return User(
-      uid: snapshot['uid'],
-      email: snapshot['email'],
-      username: snapshot['username'],
-      bio: snapshot['bio'],
-      photoUrl: snapshot['photoUrl'],
-      followers: snapshot['followers'],
-      following: snapshot['following'],
-      posts: snapshot['posts'],
-      saved: snapshot['saved'],
-      searchKey: snapshot['searchKey'],
+  static Users fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data();
+    if (snapshot == null) {
+      throw Exception('Document does not exist');
+    }
+    var userData = snapshot as Map<String, dynamic>; 
+    return Users(
+      uid: userData['uid'],
+      email: userData['email'],
+      username: userData['username'],
+      bio: userData['bio'],
+      photoUrl: userData['photoUrl'],
+      followers: userData['followers'],
+      following: userData['following'],
+      posts: userData['posts'],
+      saved: userData['saved'],
+      searchKey: userData['searchKey'],
     );
   }
 
-  Map<String, dynamic> toJson() {
+  toJson() {
     return {
-      "uid": uid,
-      "email": email,
-      "username": username,
-      "bio": bio,
-      "photoUrl": photoUrl,
-      "followers": followers,
-      "following": following,
-      "posts": posts,
-      "saved": saved,
-      "searchKey": searchKey,
-    };
+    'uid': uid,
+    'email': email,
+    'username': username,
+    'bio': bio,
+    'photoUrl': photoUrl,
+    'followers': followers,
+    'following': following,
+    'posts': posts,
+    'saved': saved,
+    'searchKey': searchKey,
+  };
   }
 }
