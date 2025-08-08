@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/text_field.dart';
+import '/widgets/text_field.dart';
 import '/screens/login_screen.dart';
 import 'upload_image_screen.dart';
 
