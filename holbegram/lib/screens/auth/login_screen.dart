@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
-import '../widgets/text_field.dart';
-import '/screens/login_screen.dart';
+import '/widgets/text_field.dart';
+import '/screens/auth/signup_screen.dart';
 
 
-class SignUp extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
     final TextEditingController emailController;
-    final TextEditingController usernameController;
     final TextEditingController passwordController;
-    final TextEditingController passwordConfirmController;
 
-    const SignUp({
+    const LoginScreen({
         super.key,
         required this.emailController,
-        required this.usernameController,
         required this.passwordController,
-        required this.passwordConfirmController,
      });
 
     @override
-    State<SignUp> createState() => _SignUpState();
+    State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginScreenState extends State<LoginScreen> {
     late bool _passwordVisible;
-    late bool _confirmedPasswordVisible;
 
     @override
     void initState() {
       super.initState();
         _passwordVisible = true;
-        _confirmedPasswordVisible = true;
       }
 
     @override
@@ -53,14 +47,6 @@ class _SignUpState extends State<SignUp> {
                                 style: TextStyle(fontFamily: "Billabong", fontSize: 50),
                             ),
                             Image.asset("assets/images/logo.webp", width: 80, height: 60),
-                            Container(
-                                child:
-                                    Text(
-                                        "Sign up to see photos and videos from your friends.",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 25),
-                                    ),
-                            ),
                             Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Column(
@@ -70,13 +56,6 @@ class _SignUpState extends State<SignUp> {
                                             controller: widget.emailController,
                                             ispassword: false,
                                             hintText: "Email",
-                                            keyboardType: TextInputType.emailAddress,
-                                        ),
-                                        SizedBox(height: 24),
-                                        TextFieldInput(
-                                            controller: widget.emailController,
-                                            ispassword: false,
-                                            hintText: "Full Name",
                                             keyboardType: TextInputType.emailAddress,
                                         ),
                                         SizedBox(height: 24),
@@ -98,24 +77,6 @@ class _SignUpState extends State<SignUp> {
                                             ),
                                         ),
                                         SizedBox(height: 28),
-                                        TextFieldInput(
-                                            controller: widget.passwordConfirmController,
-                                            ispassword: !_confirmedPasswordVisible,
-                                            hintText: "Confirm Password",
-                                            keyboardType: TextInputType.visiblePassword,
-                                            suffixIcon: IconButton(
-                                                alignment: Alignment(-1.0, 1.0),
-                                                icon: Icon(
-                                                    _confirmedPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                                                ),
-                                                onPressed: () {
-                                                    setState(() {
-                                                        _confirmedPasswordVisible = !_confirmedPasswordVisible;
-                                                    });
-                                                },
-                                            ),
-                                        ),
-                                        SizedBox(height: 28),
                                         SizedBox(
                                             height: 48,
                                             width: double.infinity,
@@ -127,12 +88,29 @@ class _SignUpState extends State<SignUp> {
                                                 ),
                                                 onPressed: () {},
                                                 child: Text(
-                                                    "Sign up",
+                                                    "Login",
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                     ),
                                                 ),
                                             ),
+                                        ),
+                                        SizedBox(height: 24),
+                                        Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget> [
+                                                Text("Forgot your login details?"),
+                                                Text(
+                                                    "Get help logging in",
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.bold,
+                                                    ),
+                                                ),
+                                            ],
+                                        ),
+                                        Flexible(
+                                            flex: 0,
+                                            child: Container(),
                                         ),
                                         SizedBox(height: 24),
                                         Divider(
@@ -143,19 +121,21 @@ class _SignUpState extends State<SignUp> {
                                             child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: <Widget> [
-                                                    Text("Have an account?"),
+                                                    Text("Don't have an account"),
                                                     TextButton(
                                                         onPressed: () {
                                                             Navigator.push(
                                                                 context,
-                                                                MaterialPageRoute(builder: (context) => LoginScreen(
+                                                                MaterialPageRoute(builder: (context) => SignUp(
                                                                     emailController: TextEditingController(),
+                                                                    usernameController: TextEditingController(),
                                                                     passwordController: TextEditingController(),
+                                                                    passwordConfirmController: TextEditingController(),
                                                                 )),
-                                                            );
+                                                        );
                                                         },
                                                         child: Text(
-                                                            "Log in",
+                                                            "Sign up",
                                                             style: TextStyle(   
                                                                 fontWeight: FontWeight.bold,
                                                                 color: Color.fromARGB(218, 226, 37, 24),
@@ -167,6 +147,30 @@ class _SignUpState extends State<SignUp> {
                                             ),
                                         ),
                                         SizedBox(height: 10),
+                                        Row(
+                                            children: [
+                                                Flexible(
+                                                    child: (Divider(thickness: 2)),
+                                                ),
+                                                Text("OR"),
+                                                Flexible(
+                                                    child: (Divider(thickness: 2)),
+                                                ),
+                                            ],
+                                        ),
+                                        SizedBox(height: 10),
+                                        Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                                Image.network(
+                                                    width: 40,
+                                                    height: 40,
+                                                    "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png",
+                                                ),
+                                                Text("Sign in with Google"),
+                                            ],
+                                        ),
                                     ],
                                 ),
                             ),
